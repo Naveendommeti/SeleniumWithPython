@@ -1,0 +1,30 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome()
+driver.get("https://www.amazon.in/")
+driver.maximize_window()
+
+time.sleep(2)
+# id = driver.find_element("id", "nav-link-accountList-nav-line-1")
+# id.click()
+# time.sleep(2)
+# email = driver.find_element("xpath", "//input[@type='email']")
+# email.click()
+# email.send_keys("naveendommeti20@gmail.com")
+# time.sleep(2)
+# click_continue = driver.find_element("xpath", "//input[@type='submit']")
+# click_continue.click()
+driver.find_element(By.ID,"nav-link-accountList-nav-line-1").click()
+driver.find_element(By.NAME,"email").send_keys("naveen@gmail.com")
+time.sleep(5)
+driver.find_element(By.ID,"continue").click()
+time.sleep(2)
+driver.find_element(By.ID,"ap_password").send_keys("Navi")
+driver.find_element(By.ID,"signInSubmit").click()
+driver.find_element(By.ID,"auth-get-new-otp-link").click()
+links = driver.find_elements(By.TAG_NAME,"a")
+print(len(links))
+time.sleep(5)
+driver.quit()
